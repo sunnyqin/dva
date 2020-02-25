@@ -1,8 +1,13 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import flatten from 'flatten';
 import invariant from 'invariant';
+import { createNetworkMiddleware } from 'react-native-offline';
 import win from 'global/window';
 import { returnSelf, isArray } from './utils';
+
+const networkMiddleware = createNetworkMiddleware({
+  queueReleaseThrottle: 200,
+});
 
 export default function({
   reducers,
@@ -21,6 +26,7 @@ export default function({
 
   const extraMiddlewares = plugin.get('onAction');
   const middlewares = setupMiddlewares([
+    networkMiddleware,
     promiseMiddleware,
     sagaMiddleware,
     ...flatten(extraMiddlewares),

@@ -33,7 +33,8 @@
     "invariant": "^2.2.1",
     "is-plain-object": "^2.0.3",
     "redux-saga": "^0.16.0",
-    "warning": "^3.0.0"
+    "warning": "^3.0.0",
+    "react-native-offline": "^5.4.0"
   },
   "peerDependencies": {
     "redux": "4.x"
